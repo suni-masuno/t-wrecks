@@ -1,4 +1,4 @@
-##Welcome to Tyrannosaurus Wrecks!
+## Welcome to Tyrannosaurus Wrecks!
 This is the web-app section of the project. 
 
 The node layer is currently isolated to the Trike Ceratops app, [here](https://github.com/suni-masuno/trike-c).
