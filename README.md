@@ -1,3 +1,10 @@
+##Welcome to Tyrannosaurus Wrecks!
+This is the web-app section of the project. 
+
+The node layer is currently isolated to the Trike Ceratops app, [here](https://github.com/suni-masuno/trike-c).
+
+For DB the current plan is to use Couchdb 2. found [here](http://couchdb.apache.org/).
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>
