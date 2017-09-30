@@ -1,18 +1,19 @@
 import React, { Component } from 'react';
 import logo from './dino.svg';
 import './App.css';
+import EditRules from './containers/EditRules'
 
 class App extends Component {
+    handleClick = () => {
+        console.log("HELLO")
+    };
   render() {
     return (
       <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to Tyrannosaurus Wrecks!</h2>
-        </div>
         <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
+            <button onClick={this.handleClick}>Save Region Rules</button>
         </p>
+        <EditRules/>
       </div>
     );
   }

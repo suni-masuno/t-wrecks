@@ -425,7 +425,7 @@ This project setup supports code splitting via [dynamic `import()`](http://2alit
 
 Here is an example:
 
-### `moduleA.js`
+### `regions.js`
 
 ```js
 const moduleA = 'Hello';
@@ -460,7 +460,7 @@ class App extends Component {
 export default App;
 ```
 
-This will make `moduleA.js` and all its unique dependencies as a separate chunk that only loads after the user clicks the 'Load' button.
+This will make `regions.js` and all its unique dependencies as a separate chunk that only loads after the user clicks the 'Load' button.
 
 You can also use it with `async` / `await` syntax if you prefer it.
 
