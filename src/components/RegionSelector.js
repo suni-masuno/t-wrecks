@@ -31,6 +31,7 @@ class RegionSelector extends Component{
             }
           </DropdownButton>
           {this.state.selectedRegion ? <RuleSelector
+                editRules={this.props.editRules}
                 ruleSet={this.props.ruleSet}
                 selectedRegion={this.state.selectedRegion}
           /> : ''}

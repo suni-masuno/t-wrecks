@@ -40,26 +40,27 @@ class RuleSelector extends Component {
       console.log("WE TRIED THIS");
     })
   };
-//   componentWillMount = () => {
-//     this.props.ruleSet = new Set();
-//   }
 
   componentWillReceiveProps(next) {
-    this.setState({region: next.selectedRegion})
+    this.setState({region: next.selectedRegion, ruleSet: next.ruleSet })
   }
 
   render() {
+      console.log(this.state)
     return (
     <div>
         <table className="switch-row">
             {
                 Object.keys(questions).map(question => {
-                    console.log(this.props.ruleSet[this.props.selectedRegion])
                     return <tr>
                         <td>{question}</td>
                         <td>
                             <label className="switch">
-                                <input type="checkbox" id={question} checked={this.props.ruleSet[this.props.selectedRegion][question]}/>
+                                <input type="checkbox" id={question}
+                                    checked={this.props.editRules.state.ruleSet[this.props.selectedRegion][question]}
+                                    onChange={(e) => {
+                                        this.props.editRules.setState({[this.props.editRules.state.ruleSet[this.props.selectedRegion][e.target]]:
+                                        true})}}/>
                                 <span className="slider round"></span>
                             </label>
                         </td>
