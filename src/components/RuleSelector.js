@@ -30,10 +30,12 @@ class RuleSelector extends Component {
     console.log(this.state.ruleSet)
 
     fetch('http://localhost:3001/api/v1/ruleSet',
-        { method: 'POST',
-          headers: {'Accept': 'application/json',
-            'content-type': 'application/json'},
-          body: 'HELLO'},
+        { 
+            method: 'post',  
+            headers: {  
+             "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"  
+        },  
+    body: JSON.stringify(this.state.ruleSet)  },
         ).then(() => {
       console.log("WE TRIED THIS");
     })
