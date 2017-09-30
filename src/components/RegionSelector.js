@@ -12,34 +12,23 @@ class RegionSelector extends Component{
     this.state = { };
   }
 
-  onSelect = event => {
-    console.log(event);
-    this.setState((previousState) => ({
-      region: event.target.value
-    }))
-    console.log(this.state);
-  };
-
   render() {
-
     return (
       <div>
-          <select onChange={this.onSelect} title='Regions' id="bg-nested-dropdown">
+          <div>stuff and things</div>
+          <DropdownButton title='Regions' id="bg-nested-dropdown">
             {
               Object.keys(this.props.ruleSet).map((region) => {
-                return <option key={region} >{region}</option>
+                return <MenuItem onClick={() => this.setState((prevState) => ({
+                  selectedRegion: region,
+                  })
+                )} key={region} >{region}</MenuItem>
               })
             }
-          </select>
+          </DropdownButton>
       </div>
     )
   }
 }
 
 export default RegionSelector;
-
-{/*{*/}
-{/*regions.map((region) => {*/}
-{/*return <MenuItem value={region}>{region}</MenuItem>*/}
-{/*})*/}
-{/*}*/}
