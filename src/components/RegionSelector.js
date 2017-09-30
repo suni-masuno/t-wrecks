@@ -7,19 +7,30 @@ import { Button, ButtonGroup, DropdownButton, MenuItem } from 'react-bootstrap'
 import regions from '../data/regions'
 
 class RegionSelector extends Component{
+  constructor(props) {
+    super(props);
+    this.state = { };
+  }
+
+  onSelect = event => {
+    console.log(event);
+    this.setState((previousState) => ({
+      region: event.target.value
+    }))
+    console.log(this.state);
+  };
+
   render() {
 
     return (
       <div>
-        <ButtonGroup>
-          <DropdownButton title={this.props.region} id="bg-nested-dropdown">
+          <select onChange={this.onSelect} title='Regions' id="bg-nested-dropdown">
             {
-              regions.map((region) => {
-                return <MenuItem value={region}>{region}</MenuItem>
+              Object.keys(this.props.ruleSet).map((region) => {
+                return <option key={region} >{region}</option>
               })
             }
-          </DropdownButton>
-        </ButtonGroup>
+          </select>
       </div>
     )
   }

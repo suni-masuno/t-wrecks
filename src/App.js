@@ -7,15 +7,9 @@ import EditRules from './containers/EditRules'
 import { Button } from 'react-bootstrap';
 
 class App extends Component {
-    handleClick = () => {
-        console.log("HELLO")
-    };
   render() {
     return (
       <div className="App">
-        <p className="App-intro">
-            <button onClick={this.handleClick}>Save Region Rules</button>
-        </p>
         <EditRules/>
       </div>
     );

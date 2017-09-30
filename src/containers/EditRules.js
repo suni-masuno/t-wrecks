@@ -5,15 +5,15 @@ import RegionSelector from '../components/RegionSelector'
 class EditRules extends Component {
   constructor(props) {
     super(props);
-    this.state = { region: 'Cuba', rules: ['Allow complaints.'] };
+    this.state = { ruleSet:{Cuba:{allowComplaints:true}, Mexico:{regionalPrivacy: true}}};
   }
     render() {
         return (
             <div>
               <RegionSelector
-                region={this.state.region}/>
+                ruleSet={this.state.ruleSet}/>
               <RuleSelector
-                rules={this.state.rules}/>
+                ruleSet={this.state.ruleSet}/>
             </div>
         );
     }

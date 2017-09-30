@@ -3,10 +3,14 @@
  */
 
 import React, { Component } from 'react';
-import rules from '../data/rules'
+import questions from '../data/questions'
 
 class RuleSelector extends Component {
-
+    constructor(props) {
+        super(props);
+        this.state = { ruleSet:{Cuba:{allowComplaints:true}}};
+      }
+    
   onSwitch = event => {
       console.log(event.target.id)
   };
@@ -22,22 +26,34 @@ class RuleSelector extends Component {
       }
   };
 
+  handleClick = () => {
+    console.log(this.state.ruleSet)
+    fetch('https://localhost:3001/api/v1/ruleSet',
+        { method: 'POST', body: JSON.stringify(this.state.ruleSet), headers: {'Content-Type': "application/json"} },
+        )
+  };
+
   render() {
-    return <table className="switch-row">
-        {
-            rules.map(rule => {
-                return <tr>
-                    <td>{rule}</td>
-                    <td>
-                        <label className="switch">
-                            <input type="checkbox" id={rule} onChange={this.onSwitch} checked={this.isSelected(rule, this.props.rules)}/>
-                            <span className="slider round"></span>
-                        </label>
-                    </td>
-                </tr>;
-            })
-        }
-    </table>;
+    return (
+    <div>
+        <table className="switch-row">
+            {
+                Object.keys(questions).map(question => {
+                    return <tr>
+                        <td>{question}</td>
+                        <td>
+                            <label className="switch">
+                                <input type="checkbox" id={question} defaultChecked={this.state.ruleSet['Cuba'][question]}/>
+                                <span className="slider round"></span>
+                            </label>
+                        </td>
+                    </tr>;
+                })
+            }
+        </table>
+        <button onClick={this.handleClick}>Save Region Rules</button>
+    </div>
+    )
   }
 }
 
