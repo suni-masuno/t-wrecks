@@ -28,9 +28,15 @@ class RuleSelector extends Component {
 
   handleClick = () => {
     console.log(this.state.ruleSet)
-    fetch('https://localhost:3001/api/v1/ruleSet',
-        { method: 'POST', body: JSON.stringify(this.state.ruleSet), headers: {'Content-Type': "application/json"} },
-        )
+
+    fetch('http://localhost:3001/api/v1/ruleSet',
+        { method: 'POST',
+          headers: {'Accept': 'application/json',
+            'content-type': 'application/json'},
+          body: 'HELLO'},
+        ).then(() => {
+      console.log("WE TRIED THIS");
+    })
   };
 
   render() {
