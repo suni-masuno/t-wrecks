@@ -15,17 +15,6 @@ class RuleSelector extends Component {
       console.log(event.target.id)
   };
 
-  isSelected = (rule, selectedRules) => {
-      let selected = selectedRules.filter(function(oneRule){
-        return (oneRule === rule);
-      });
-      if (selected.length > 0) {
-        return true;
-      } else {
-        return false;
-      }
-  };
-
   handleClick = () => {
     console.log(this.state.ruleSet)
 
@@ -48,9 +37,13 @@ class RuleSelector extends Component {
         headers: {
           "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
         }},
-    ).then(response => {
-      console.log(JSON.parse(response.body));
-    })
+    ).then( response => {
+      return response.json();
+    }).then( json => {
+      console.log(this.state.ruleSet);
+      this.state.ruleSet = json;
+      console.log(this.state.ruleSet);
+    });
   };
 
   render() {
