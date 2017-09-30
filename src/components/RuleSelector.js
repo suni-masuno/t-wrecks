@@ -41,6 +41,18 @@ class RuleSelector extends Component {
     })
   };
 
+  handleGet = () => {
+    fetch('http://localhost:3001/api/v1/ruleSet',
+      {
+        method: 'get',
+        headers: {
+          "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
+        }},
+    ).then(response => {
+      console.log(JSON.parse(response.body));
+    })
+  };
+
   render() {
     return (
     <div>
@@ -60,6 +72,7 @@ class RuleSelector extends Component {
             }
         </table>
         <button onClick={this.handleClick}>Save Region Rules</button>
+        <button onClick={this.handleGet}>GET Region Rules</button>
     </div>
     )
   }
