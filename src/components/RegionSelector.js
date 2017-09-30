@@ -3,16 +3,32 @@
  */
 
 import React, { Component } from 'react';
+import { Button, ButtonGroup, DropdownButton, MenuItem } from 'react-bootstrap'
 import regions from '../data/regions'
 
-const RegionSelector = props => (
-         <select>
+class RegionSelector extends Component{
+  render() {
+
+    return (
+      <div>
+        <ButtonGroup>
+          <DropdownButton title={this.props.region} id="bg-nested-dropdown">
             {
-                regions.map(function (region) {
-                    return <option value={region}>{region}</option>
-                })
+              regions.map((region) => {
+                return <MenuItem value={region}>{region}</MenuItem>
+              })
             }
-        </select>
-)
+          </DropdownButton>
+        </ButtonGroup>
+      </div>
+    )
+  }
+}
 
 export default RegionSelector;
+
+{/*{*/}
+{/*regions.map((region) => {*/}
+{/*return <MenuItem value={region}>{region}</MenuItem>*/}
+{/*})*/}
+{/*}*/}

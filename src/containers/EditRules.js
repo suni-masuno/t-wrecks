@@ -5,7 +5,7 @@ import RegionSelector from '../components/RegionSelector'
 class EditRules extends Component {
   constructor(props) {
     super(props);
-    this.state = { region: '', rules: [] };
+    this.state = { region: 'Cuba', rules: [] };
   }
     render() {
         return (
