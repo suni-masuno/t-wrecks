@@ -12,8 +12,6 @@ class EditRules extends Component {
             <div>
               <RegionSelector
                 ruleSet={this.state.ruleSet}/>
-              <RuleSelector
-                ruleSet={this.state.ruleSet}/>
             </div>
         );
     }

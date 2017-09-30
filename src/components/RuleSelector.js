@@ -54,6 +54,7 @@ class RuleSelector extends Component {
   };
 
   render() {
+      console.log(this.props)
     return (
     <div>
         <table className="switch-row">
