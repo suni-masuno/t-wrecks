@@ -34,10 +34,15 @@ class EditRules extends Component {
       }
 };
   }
+
+  componentWillReceiveProps(next) {
+    this.props.editRules.setState({[this.props.editRules.ruleSet]: next.editRules.state.ruleSet})
+  }
   render() {
     return (
       <div>
         <RegionSelector
+          editRules = {this}
           ruleSet={this.state.ruleSet} />
       </div>
     );
