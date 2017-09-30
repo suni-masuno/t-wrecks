@@ -5,7 +5,7 @@ import RegionSelector from '../components/RegionSelector'
 class EditRules extends Component {
   constructor(props) {
     super(props);
-    this.state = { ruleSet:{Cuba:{allowComplaints:true}, Mexico:{regionalPrivacy: true}}};
+    this.state = { ruleSet:{ Cuba: {allowComplaints: true}, Mexico :{informOfThirdParty: true}} };
   }
     render() {
         return (

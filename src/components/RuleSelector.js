@@ -8,7 +8,7 @@ import questions from '../data/questions'
 class RuleSelector extends Component {
     constructor(props) {
         super(props);
-        this.state = { ruleSet:{Cuba:{allowComplaints:true}}};
+        this.state = {};
       }
     
   onSwitch = event => {
@@ -42,7 +42,7 @@ class RuleSelector extends Component {
   };
 
   render() {
-      console.log(this.props)
+      console.log(this.props.selectedRegion)
     return (
     <div>
         <table className="switch-row">
@@ -52,7 +52,7 @@ class RuleSelector extends Component {
                         <td>{question}</td>
                         <td>
                             <label className="switch">
-                                <input type="checkbox" id={question} defaultChecked={this.state.ruleSet['Cuba'][question]}/>
+                                <input type="checkbox" id={question} defaultChecked={this.props.ruleSet[this.props.selectedRegion][question]}/>
                                 <span className="slider round"></span>
                             </label>
                         </td>
