@@ -29,6 +29,13 @@ class RuleSelector extends Component {
       console.log("WE TRIED THIS");
     })
   };
+//   componentWillMount = () => {
+//     this.props.ruleSet = new Set();
+//   }
+
+  componentWillReceiveProps(next) {
+    this.setState({region: next.selectedRegion})
+  }
 
   handleGet = () => {
     fetch('http://localhost:3001/api/v1/ruleSet',
@@ -47,17 +54,17 @@ class RuleSelector extends Component {
   };
 
   render() {
-      console.log(this.props.selectedRegion)
     return (
     <div>
         <table className="switch-row">
             {
                 Object.keys(questions).map(question => {
+                    console.log(this.props.ruleSet[this.props.selectedRegion])
                     return <tr>
                         <td>{question}</td>
                         <td>
                             <label className="switch">
-                                <input type="checkbox" id={question} defaultChecked={this.props.ruleSet[this.props.selectedRegion][question]}/>
+                                <input type="checkbox" id={question} checked={this.props.ruleSet[this.props.selectedRegion][question]}/>
                                 <span className="slider round"></span>
                             </label>
                         </td>
