@@ -19,8 +19,7 @@ class RegionSelector extends Component{
   render() {
     return (
       <div>
-          <p>{this.state.selectedRegion}</p>
-          <DropdownButton title='Regions' id="bg-nested-dropdown">
+          <DropdownButton title={this.state.selectedRegion ? this.state.selectedRegion : 'Select a Region'} id="bg-nested-dropdown">
             {
               Object.keys(this.props.ruleSet).map((region) => {
                 return <MenuItem onClick={() => this.setState((prevState) => ({

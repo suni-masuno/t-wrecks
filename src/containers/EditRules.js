@@ -40,7 +40,7 @@ class EditRules extends Component {
   }
   render() {
     return (
-      <div>
+      <div class="edit-rules">
         <RegionSelector
           editRules = {this}
           ruleSet={this.state.ruleSet} />

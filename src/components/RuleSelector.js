@@ -55,10 +55,10 @@ class RuleSelector extends Component {
     return (
     <div>
         <table className="switch-row">
+          <tbody>
             {
                 Object.keys(questions).map(question => {
                     return <tr>
-                        <td>{question}</td>
                         <td>
                             <label className="switch">
                                 <input type="checkbox" id={question}
@@ -69,9 +69,11 @@ class RuleSelector extends Component {
                                 <span className="slider round"></span>
                             </label>
                         </td>
+                      <td>{questions[question]}</td>
                     </tr>;
                 })
             }
+          </tbody>
         </table>
         <button onClick={this.handleClick}>Save Region Rules</button>
         <button onClick={this.handleGet}>GET Region Rules</button>
