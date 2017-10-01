@@ -105,7 +105,7 @@ class EditRules extends Component {
                   </tbody>
                 </table>
                 <br></br>
-                <Button onClick={this.handleClick} bsStyle="warning">Save</Button>
+                <Button style={{backgroundColor: 'rgb(81,117,135)'}} onClick={this.handleClick} bsStyle="warning">Save</Button>
             </div>
             : ''}
         </div>
