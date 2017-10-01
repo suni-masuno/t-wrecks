@@ -90,7 +90,8 @@ class EditRules extends Component {
                     }
                   </tbody>
                 </table>
-                <Button onClick={this.handleClick} bsStyle="default">Save</Button>
+                <br></br>
+                <Button onClick={this.handleClick} bsStyle="warning">Save</Button>
             </div>
             : ''}
         </div>
