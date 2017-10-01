@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { Button, ButtonGroup, DropdownButton, MenuItem } from 'react-bootstrap'
-import questions from '../data/questions'
-import regions from '../data/regions'
+import { Button, ButtonGroup, DropdownButton, MenuItem } from 'react-bootstrap';
+import questions from '../data/questions';
+import regions from '../data/regions';
+import { ToastContainer, toast } from 'react-toastify';
 
 class EditRules extends Component {
   constructor(props) {
@@ -29,7 +30,9 @@ class EditRules extends Component {
         },
         body: JSON.stringify(this.state.ruleSet)  },
     ).then(() => {
-      console.log("Post successful");
+      console.log('saved')
+      // toast('Saved Rule Set!');
+
     })
   };
 
@@ -52,6 +55,15 @@ class EditRules extends Component {
   render() {
     return (
       <div>
+        <ToastContainer 
+          position="top-right"
+          type="default"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          pauseOnHover
+        />
         <div className="header">
           <img className="dino" />
           <span className="header-title">CODE: DINO</span>
