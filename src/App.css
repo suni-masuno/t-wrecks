@@ -178,3 +178,12 @@ input:checked + .slider:before {
   right: 150px;
   font-size: 18px;
 }
+
+.dark-toast{
+  background: #323232;
+  color: #fff;
+}
+ 
+.dark-toast > .toastify__close{
+  color: #fff;
+}

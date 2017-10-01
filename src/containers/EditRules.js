@@ -30,9 +30,7 @@ class EditRules extends Component {
         },
         body: JSON.stringify(this.state.ruleSet)  },
     ).then(() => {
-      console.log('saved')
-      // toast('Saved Rule Set!');
-
+      toast('Saved Rule Set!');
     })
   };
 
@@ -45,8 +43,10 @@ class EditRules extends Component {
         },
         body: JSON.stringify(this.state.ruleSet)  },
     ).then(() => {
-      console.log("Post successful");
-    })
+      toast('Deploy Successful!');
+    }).catch(function(error) {
+        toast('There has been a problem with your fetch operation, bruh.');
+      });
   };
 
   componentWillReceiveProps(next) {
