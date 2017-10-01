@@ -73,7 +73,7 @@ class EditRules extends Component {
         <div>
             <DropdownButton title={this.state.selectedRegion ? this.state.selectedRegion : 'Select a Region'} id="bg-nested-dropdown">
               {
-                Object.keys(this.state.ruleSet).map((region) => {
+                Object.keys(this.state.ruleSet).sort((a,b) => {return a>b;}).map((region) => {
                   return <MenuItem onClick={() => this.setState((prevState) => ({
                     selectedRegion: region,
                     })
