@@ -62,6 +62,21 @@ class EditRules extends Component {
     })
   };
 
+  handleDeploy = () => {
+    console.log(this.state.ruleSet)
+
+    fetch('http://localhost:3002/api/v1/generate',
+      {
+        method: 'post',
+        headers: {
+          "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
+        },
+        body: JSON.stringify(this.state.ruleSet)  },
+    ).then(() => {
+      console.log("Post successful");
+    })
+  };
+
   componentWillReceiveProps(next) {
     console.log(next)
     this.setState({region: this.state.selectedRegion, ruleset: next.state.ruleSet})
@@ -70,40 +85,48 @@ class EditRules extends Component {
     console.log(this.state.ruleSet);
     return (
       <div>
-          <DropdownButton title={this.state.selectedRegion ? this.state.selectedRegion : 'Select a Region'} id="bg-nested-dropdown">
-            {
-              Object.keys(this.state.ruleSet).map((region) => {
-                return <MenuItem onClick={() => this.setState((prevState) => ({
-                  selectedRegion: region,
-                  })
-                )} key={region} >{region}</MenuItem>
-              })
-            }
-          </DropdownButton>
-          {this.state.selectedRegion ? 
-            <div>
-              <table className="switch-row">
-                <tbody>
-                  {
-                      Object.keys(questions).map(question => {
-                          return <tr>
-                          <td>
-                            <label className="switch">
-                              <input type="checkbox" id={question}
-                                     checked={this.state.ruleSet[this.state.selectedRegion][question]}
-                                     onChange={this.toggleClick}/>
-                              <span className="slider round"></span>
-                            </label>
-                          </td>
-                          <td>{questions[question]}</td>
-                        </tr>;
-                      })
-                  }
-                </tbody>
-              </table>
-              <Button onClick={this.handleClick} bsStyle="default">Save Region Rules</Button>
-          </div>
-          : ''}
+        <div className="header">
+          <img className="dino" />
+          <span className="header-title">CODE: DINO</span>
+          <Button onClick={this.handleDeploy} bsStyle="danger" className="header-button">Deploy</Button>
+          <img className="shield" />
+        </div>
+        <div>
+            <DropdownButton title={this.state.selectedRegion ? this.state.selectedRegion : 'Select a Region'} id="bg-nested-dropdown">
+              {
+                Object.keys(this.state.ruleSet).map((region) => {
+                  return <MenuItem onClick={() => this.setState((prevState) => ({
+                    selectedRegion: region,
+                    })
+                  )} key={region} >{region}</MenuItem>
+                })
+              }
+            </DropdownButton>
+            {this.state.selectedRegion ?
+              <div>
+                <table className="switch-row">
+                  <tbody>
+                    {
+                        Object.keys(questions).map(question => {
+                            return <tr>
+                            <td>
+                              <label className="switch">
+                                <input type="checkbox" id={question}
+                                       checked={this.state.ruleSet[this.state.selectedRegion][question]}
+                                       onChange={this.toggleClick}/>
+                                <span className="slider round"></span>
+                              </label>
+                            </td>
+                            <td>{questions[question]}</td>
+                          </tr>;
+                        })
+                    }
+                  </tbody>
+                </table>
+                <Button onClick={this.handleClick} bsStyle="default">Save Region Rules</Button>
+            </div>
+            : ''}
+        </div>
       </div>
     );
   }
