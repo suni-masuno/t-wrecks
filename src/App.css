@@ -160,3 +160,9 @@ input:checked + .slider:before {
   padding: 40px;
 }
 
+.header-button {
+  position: absolute;
+  bottom: 30px;
+  right: 150px;
+  font-size: 18px;
+}

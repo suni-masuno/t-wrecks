@@ -58,7 +58,7 @@ class EditRules extends Component {
         },
         body: JSON.stringify(this.state.ruleSet)  },
     ).then(() => {
-      console.log("WE TRIED THIS");
+      console.log("Post successful");
     })
   };
 

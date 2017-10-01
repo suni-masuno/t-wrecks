@@ -3,15 +3,17 @@
  */
 
 import React, { Component } from 'react';
+import { Button } from 'react-bootstrap'
 
 class Header extends Component{
 
   render() {
     return (
-      <div class="header">
-        <img class="dino" />
-        <span class="header-title">CODE: DINO</span>
-        <img class="shield" />
+      <div className="header">
+        <img className="dino" />
+        <span className="header-title">CODE: DINO</span>
+        <Button onClick={this.handleClick} bsStyle="danger" className="header-button">Deploy</Button>
+        <img className="shield" />
       </div>
     )
   }
