@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import RuleSelector from '../components/RuleSelector'
-import RegionSelector from '../components/RegionSelector'
 import { Button, ButtonGroup, DropdownButton, MenuItem } from 'react-bootstrap'
 import questions from '../data/questions'
 import { mapValues } from 'lodash'
@@ -72,7 +70,6 @@ class EditRules extends Component {
     console.log(this.state.ruleSet);
     return (
       <div>
-          <p>{this.state.selectedRegion}</p>
           <DropdownButton title={this.state.selectedRegion ? this.state.selectedRegion : 'Select a Region'} id="bg-nested-dropdown">
             {
               Object.keys(this.state.ruleSet).map((region) => {
@@ -104,7 +101,7 @@ class EditRules extends Component {
                   }
                 </tbody>
               </table>
-              <button onClick={this.handleClick}>Save Region Rules</button>
+              <Button onClick={this.handleClick} bsStyle="default">Save Region Rules</Button>
           </div>
           : ''}
       </div>
