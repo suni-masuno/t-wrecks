@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, ButtonGroup, DropdownButton, MenuItem } from 'react-bootstrap';
+import { Button, DropdownButton, MenuItem } from 'react-bootstrap';
 import questions from '../data/questions';
 import regions from '../data/regions';
 import { ToastContainer, toast } from 'react-toastify';
@@ -38,14 +38,16 @@ class EditRules extends Component {
     fetch('http://localhost:3002/api/v1/generate',
       {
         method: 'post',
+        mode: 'no-cors',
         headers: {
           "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
         },
         body: JSON.stringify(this.state.ruleSet)  },
     ).then(() => {
-      toast('Deploy Successful!');
+      toast('Deploy Successful.');
     }).catch(function(error) {
-        toast('There has been a problem with your fetch operation, bruh.');
+        console.log(error);
+        toast('There has been a problem with your deployment Agent.');
       });
   };
 
@@ -55,7 +57,7 @@ class EditRules extends Component {
   render() {
     return (
       <div>
-        <ToastContainer 
+        <ToastContainer
           position="top-right"
           type="default"
           autoClose={5000}
@@ -65,10 +67,10 @@ class EditRules extends Component {
           pauseOnHover
         />
         <div className="header">
-          <img className="dino" />
+          <img alt="Application Logo" className="dino" />
           <span className="header-title">CODE: DINO</span>
           <Button onClick={this.handleDeploy} bsStyle="danger" className="header-button">Deploy</Button>
-          <img className="shield" />
+          <img alt="Enterprise Logo" className="shield" />
         </div>
         <div>
             <DropdownButton title={this.state.selectedRegion ? this.state.selectedRegion : 'Select a Region'} id="bg-nested-dropdown">
@@ -87,7 +89,7 @@ class EditRules extends Component {
                   <tbody>
                     {
                         Object.keys(questions).map(question => {
-                            return <tr>
+                            return <tr key={question}>
                             <td>
                               <label className="switch">
                                 <input type="checkbox" id={question}
