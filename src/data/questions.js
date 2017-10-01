@@ -12,7 +12,9 @@ var questions = {
     allowDataModify: 'Allow user to modify data.',
     requireConsentToProcess: 'Require consent to process personal data.',
     allowComplaints: 'Allow complaints.',
-    requireConsentToCollect: 'Require consent before collecting personal data.'
+    requireConsentToCollect: 'Require consent before collecting personal data.',
+    restrictVisitorTracking: 'Restrict visitor tracking via cookies or analytics.',
+    dataResideInCountry: 'Data must reside in the country of origin.',
 };
 
 export default questions;

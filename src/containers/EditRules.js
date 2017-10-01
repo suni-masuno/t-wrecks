@@ -1,39 +1,13 @@
 import React, { Component } from 'react';
 import { Button, ButtonGroup, DropdownButton, MenuItem } from 'react-bootstrap'
 import questions from '../data/questions'
-import { mapValues } from 'lodash'
-
+import regions from '../data/regions'
 
 class EditRules extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      ruleSet: {
-        Cuba: {
-          prompt18: false,
-          regionalPrivacy: false,
-          accessInCountryOnly: true,
-          accessOutOfCountryAllowed: false,
-          informOfThirdParty: false,
-          allowDataRemoval: true,
-          allowDataModify: false,
-          requireConsentToProcess: true,
-          allowComplaints: false,
-          requireConsentToCollect: false,
-        },
-        Mexico: {
-          prompt18: true,
-          regionalPrivacy: false,
-          accessInCountryOnly: false,
-          accessOutOfCountryAllowed: false,
-          informOfThirdParty: false,
-          allowDataRemoval: false,
-          allowDataModify: false,
-          requireConsentToProcess: false,
-          allowComplaints: false,
-          requireConsentToCollect: true,
-         }
-      }
+      ...regions,
     }
   }
 
@@ -44,12 +18,9 @@ class EditRules extends Component {
     this.setState({
       oldRuleSet
     });
-    console.log(this.state.ruleSet);
   }
 
   handleClick = () => {
-    console.log(this.state.ruleSet)
-
     fetch('http://localhost:3001/api/v1/ruleSet',
       {
         method: 'post',
@@ -63,8 +34,6 @@ class EditRules extends Component {
   };
 
   handleDeploy = () => {
-    console.log(this.state.ruleSet)
-
     fetch('http://localhost:3002/api/v1/generate',
       {
         method: 'post',
@@ -78,11 +47,9 @@ class EditRules extends Component {
   };
 
   componentWillReceiveProps(next) {
-    console.log(next)
     this.setState({region: this.state.selectedRegion, ruleset: next.state.ruleSet})
   }
   render() {
-    console.log(this.state.ruleSet);
     return (
       <div>
         <div className="header">
