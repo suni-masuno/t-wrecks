@@ -64,7 +64,7 @@ class RuleSelector extends Component {
                                 <input type="checkbox" id={question}
                                     checked={this.props.editRules.state.ruleSet[this.props.selectedRegion][question]}
                                     onChange={(e) => {
-                                        this.props.editRules.setState({[this.props.editRules.state.ruleSet[this.props.selectedRegion][e.target]]:
+                                        this.props.editRules.setState({[this.props.editRules.state.ruleSet[this.props.selectedRegion][e.target.id]]:
                                         true})}}/>
                                 <span className="slider round"></span>
                             </label>
