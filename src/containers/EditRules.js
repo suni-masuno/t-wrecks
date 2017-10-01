@@ -39,16 +39,15 @@ class EditRules extends Component {
     }
   }
 
-  isSelected = (rule, selectedRules) => {
-      let selected = selectedRules.filter(function(oneRule){
-        return (oneRule === rule);
-      });
-      if (selected.length > 0) {
-        return true;
-      } else {
-        return false;
-      }
-  };
+  toggleClick = (event) => {
+    const oldRuleSet = this.state.ruleSet;
+    const changedIdValue = event.target.id;
+    oldRuleSet[this.state.selectedRegion][changedIdValue] = !oldRuleSet[this.state.selectedRegion][changedIdValue];
+    this.setState({
+      oldRuleSet
+    });
+    console.log(this.state.ruleSet);
+  }
 
   handleClick = () => {
     console.log(this.state.ruleSet)
@@ -70,6 +69,7 @@ class EditRules extends Component {
     this.setState({region: this.state.selectedRegion, ruleset: next.state.ruleSet})
   }
   render() {
+    console.log(this.state.ruleSet);
     return (
       <div>
           <p>{this.state.selectedRegion}</p>
@@ -94,18 +94,7 @@ class EditRules extends Component {
                                   <label className="switch">
                                       <input type="checkbox" id={question}
                                           checked={this.state.ruleSet[this.state.selectedRegion][question]}
-                                          onChange={(e) => {
-                                                this.setState(
-                                                  {ruleSet: 
-                                                    {...this.state.ruleSet, 
-                                                    [this.state.ruleSet[this.selectedRegion]]:
-                                                      {...this.state.ruleSet[this.selectedRegion],
-                                                      [this.state.ruleSet[this.selectedRegion][question]]: true 
-                                                      }
-                                                    }
-                                                  }) 
-                                                  console.log(this.state)
-                                              }}/>
+                                          onChange={this.toggleClick}/>
                                       <span className="slider round"></span>
                                   </label>
                               </td>
