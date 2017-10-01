@@ -58,7 +58,7 @@ class EditRules extends Component {
     return (
       <div>
         <ToastContainer
-          position="top-right"
+          position="top-left"
           type="default"
           autoClose={5000}
           hideProgressBar={false}
