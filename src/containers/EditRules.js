@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import RuleSelector from '../components/RuleSelector'
 import RegionSelector from '../components/RegionSelector'
+import { Button, ButtonGroup, DropdownButton, MenuItem } from 'react-bootstrap'
+import questions from '../data/questions'
+import { mapValues } from 'lodash'
+
 
 class EditRules extends Component {
   constructor(props) {
@@ -32,18 +36,86 @@ class EditRules extends Component {
           requireConsentToCollect: true,
          }
       }
-};
+    }
   }
 
+  isSelected = (rule, selectedRules) => {
+      let selected = selectedRules.filter(function(oneRule){
+        return (oneRule === rule);
+      });
+      if (selected.length > 0) {
+        return true;
+      } else {
+        return false;
+      }
+  };
+
+  handleClick = () => {
+    console.log(this.state.ruleSet)
+
+    fetch('http://localhost:3001/api/v1/ruleSet',
+        { 
+            method: 'post',  
+            headers: {  
+             "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"  
+        },  
+    body: JSON.stringify(this.state.ruleSet)  },
+        ).then(() => {
+      console.log("WE TRIED THIS");
+    })
+  };
+
   componentWillReceiveProps(next) {
-    this.props.editRules.setState({[this.props.editRules.ruleSet]: next.editRules.state.ruleSet})
+    console.log(next)
+    this.setState({region: this.state.selectedRegion, ruleset: next.state.ruleSet})
   }
   render() {
     return (
       <div>
-        <RegionSelector
-          editRules = {this}
-          ruleSet={this.state.ruleSet} />
+          <p>{this.state.selectedRegion}</p>
+          <DropdownButton title='Regions' id="bg-nested-dropdown">
+            {
+              Object.keys(this.state.ruleSet).map((region) => {
+                return <MenuItem onClick={() => this.setState((prevState) => ({
+                  selectedRegion: region,
+                  })
+                )} key={region} >{region}</MenuItem>
+              })
+            }
+          </DropdownButton>
+          {this.state.selectedRegion ? 
+            <div>
+              <table className="switch-row">
+                  {
+                      Object.keys(questions).map(question => {
+                          return <tr>
+                              <td>{question}</td>
+                              <td>
+                                  <label className="switch">
+                                      <input type="checkbox" id={question}
+                                          checked={this.state.ruleSet[this.state.selectedRegion][question]}
+                                          onChange={(e) => {
+                                                this.setState(
+                                                  {ruleSet: 
+                                                    {...this.state.ruleSet, 
+                                                    [this.state.ruleSet[this.selectedRegion]]:
+                                                      {...this.state.ruleSet[this.selectedRegion],
+                                                      [this.state.ruleSet[this.selectedRegion][question]]: true 
+                                                      }
+                                                    }
+                                                  }) 
+                                                  console.log(this.state)
+                                              }}/>
+                                      <span className="slider round"></span>
+                                  </label>
+                              </td>
+                          </tr>;
+                      })
+                  }
+              </table>
+              <button onClick={this.handleClick}>Save Region Rules</button>
+          </div>
+          : ''}
       </div>
     );
   }
