@@ -10,7 +10,7 @@ class Header extends Component{
     return (
       <div class="header">
         <img class="dino" />
-        <span class="header-title">Code: Dino</span>
+        <span class="header-title">CODE: DINO</span>
         <img class="shield" />
       </div>
     )

@@ -127,7 +127,7 @@ input:checked + .slider:before {
 .header-title {
   color: white;
   font-size: 45px;
-  font-family: 'Kanit', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   position: absolute;
   top: 15px;
   left: 150px;
